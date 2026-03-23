@@ -3,6 +3,28 @@
 import { type Dictionary } from "../dictionaries";
 import { motion } from "framer-motion";
 import { SearchCheck } from "lucide-react";
+import { 
+  SiTypescript, 
+  SiReact, 
+  SiNextdotjs, 
+  SiWebpack, 
+  SiFigma, 
+  SiNodedotjs, 
+  SiGo, 
+  SiPython, 
+  SiPostgresql, 
+  SiGraphql, 
+  SiDocker, 
+  SiKubernetes, 
+  SiGithub, 
+  SiGooglecloud,
+} from "react-icons/si";
+import { FaAws } from "react-icons/fa6";
+import { VscCode } from "react-icons/vsc";
+
+// Fallback for icons that might have changed names in recent react-icons versions
+const VscIcon = VscCode;
+const AmazonIcon = FaAws;
 
 export function Skills({ dict }: { dict: Dictionary }) {
   return (
@@ -28,24 +50,24 @@ export function Skills({ dict }: { dict: Dictionary }) {
           transition={{ delay: 0.1 }}
         >
           <div className="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i className="devicon-vscode-plain colored text-2xl" />
+            <VscIcon className="text-[#007ACC] text-2xl" />
           </div>
           <h3 className="text-xl font-bold mb-4">{dict.skills.frontend}</h3>
           <div className="flex flex-wrap gap-2">
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-typescript-plain colored text-xl" /> TypeScript
+              <SiTypescript className="text-[#3178C6] text-xl" /> TypeScript
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-react-original colored text-xl" /> React
+              <SiReact className="text-[#61DAFB] text-xl" /> React
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-nextjs-plain text-xl" /> Next.js
+              <SiNextdotjs className="text-on-surface text-xl" /> Next.js
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-webpack-plain colored text-xl" /> Microfrontends
+              <SiWebpack className="text-[#8DD6F9] text-xl" /> Microfrontends
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-figma-plain colored text-xl" /> Design Systems
+              <SiFigma className="text-[#F24E1E] text-xl" /> Design Systems
             </span>
           </div>
         </motion.div>
@@ -59,24 +81,24 @@ export function Skills({ dict }: { dict: Dictionary }) {
           transition={{ delay: 0.2 }}
         >
           <div className="w-12 h-12 rounded-lg bg-secondary-fixed flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i className="devicon-nodejs-plain colored text-2xl" />
+            <SiNodedotjs className="text-[#339933] text-2xl" />
           </div>
           <h3 className="text-xl font-bold mb-4">{dict.skills.backend}</h3>
           <div className="flex flex-wrap gap-2">
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-nodejs-plain colored text-xl" /> Node.js
+              <SiNodedotjs className="text-[#339933] text-xl" /> Node.js
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-go-original-wordmark colored text-xl" /> Golang
+              <SiGo className="text-[#00ADD8] text-xl" /> Golang
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-python-plain colored text-xl" /> Python
+              <SiPython className="text-[#3776AB] text-xl" /> Python
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-postgresql-plain colored text-xl" /> SQL/NoSQL
+              <SiPostgresql className="text-[#336791] text-xl" /> SQL/NoSQL
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-graphql-plain colored text-xl" /> GraphQL
+              <SiGraphql className="text-[#E10098] text-xl" /> GraphQL
             </span>
           </div>
         </motion.div>
@@ -90,18 +112,18 @@ export function Skills({ dict }: { dict: Dictionary }) {
           transition={{ delay: 0.3 }}
         >
           <div className="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i className="devicon-docker-plain colored text-2xl" />
+            <SiDocker className="text-[#2496ED] text-2xl" />
           </div>
           <h3 className="text-xl font-bold mb-4">{dict.skills.devops}</h3>
           <div className="flex flex-wrap gap-2">
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-docker-plain colored text-xl" /> <i className="devicon-kubernetes-plain colored text-xl" /> Docker & K8s
+              <SiDocker className="text-[#2496ED] text-xl" /> <SiKubernetes className="text-[#326CE5] text-xl" /> Docker & K8s
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-github-original text-xl" /> CI/CD Pipelines
+              <SiGithub className="text-on-surface text-xl" /> CI/CD Pipelines
             </span>
             <span className="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest shadow-sm rounded-full text-xs font-semibold text-on-surface-variant border border-outline-variant/10">
-              <i className="devicon-amazonwebservices-original colored text-xl" /> <i className="devicon-googlecloud-plain colored text-xl" /> AWS / GCP
+              <AmazonIcon className="text-[#FF9900] text-xl" /> <SiGooglecloud className="text-[#4285F4] text-xl" /> AWS / GCP
             </span>
           </div>
         </motion.div>
@@ -131,3 +153,4 @@ export function Skills({ dict }: { dict: Dictionary }) {
     </section>
   );
 }
+

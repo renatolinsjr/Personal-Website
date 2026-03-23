@@ -13,7 +13,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
         <motion.div
           className="lg:col-span-8"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >

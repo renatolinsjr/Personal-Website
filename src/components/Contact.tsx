@@ -1,5 +1,5 @@
 import { type Dictionary } from "../dictionaries";
-import { ContactForm } from "./ContactForm";
+import { ContactFormWrapper } from "./ContactFormWrapper";
 import { Mail, MapPin } from "lucide-react";
 
 export function Contact({ dict }: { dict: Dictionary }) {
@@ -30,8 +30,8 @@ export function Contact({ dict }: { dict: Dictionary }) {
               </div>
             </div>
           </div>
-          <div className="lg:col-span-1">
-            <ContactForm dict={dict} />
+          <div className="lg:col-span-1 min-h-[500px]">
+            <ContactFormWrapper dict={dict} />
           </div>
         </div>
       </div>

@@ -59,11 +59,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale || "pt-BR"} suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" integrity="sha384-DjehTlU5SubGD1zUGe78SkwLgw+q2y9DXnmy3EaDbXA9nvFMPW3LP5verNrWr9rW" crossOrigin="anonymous" />
-      </head>
       <body
         className={`${jakarta.variable} ${inter.variable} ${spaceGrotesk.variable} antialiased`}
         suppressHydrationWarning
@@ -72,7 +67,10 @@ export default async function RootLayout({
         <Providers>
           {children}
         </Providers>
-        {env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />}
+        
+        {env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );
