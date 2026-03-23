@@ -5,7 +5,6 @@ import { CheckIcon, ChevronsUpDown } from 'lucide-react';
 import * as RPNInput from 'react-phone-number-input';
 import flags from 'react-phone-number-input/flags';
 
-import { Button } from '@/components/ui/button';
 import {
   Command,
   CommandEmpty,
@@ -49,7 +48,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
            *
            * @param {E164Number | undefined} value - The entered value
            */
-          // @ts-ignore
+          // @ts-expect-error - react-phone-number-input types can be tricky
           onChange={(value) => onChange?.(value || '')}
           {...props}
         />
@@ -58,7 +57,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
   );
 PhoneInput.displayName = 'PhoneInput';
 
-const InputComponent = React.forwardRef<HTMLInputElement, any>(
+const InputComponent = React.forwardRef<HTMLInputElement, React.ComponentProps<typeof Input>>(
   ({ className, style, ...props }, ref) => (
     <Input
       className={cn(

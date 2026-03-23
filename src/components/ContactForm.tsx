@@ -81,7 +81,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
       } else {
         throw new Error(result.error || dict.contact.form.error);
       }
-    } catch (error) {
+    } catch {
       toast.error(dict.contact.form.error);
       setFormStatus({
         type: "error",
