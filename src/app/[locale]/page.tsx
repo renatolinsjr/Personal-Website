@@ -1,12 +1,22 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { dictionaries, type Dictionary } from "../../dictionaries";
+import dynamic from "next/dynamic";
 import { Hero } from "../../components/Hero";
-import { Experience } from "../../components/Experience";
-import { Skills } from "../../components/Skills";
-import { Contact } from "../../components/Contact";
-import { JsonLd } from "../../components/json-ld";
 import { Navigation } from "../../components/Navigation";
+import { JsonLd } from "../../components/json-ld";
+
+const Skills = dynamic(() => import("../../components/Skills").then(mod => mod.Skills), {
+  loading: () => <div className="h-96 animate-pulse bg-surface-container-low rounded-xl m-8" />,
+});
+
+const Experience = dynamic(() => import("../../components/Experience").then(mod => mod.Experience), {
+  loading: () => <div className="h-96 animate-pulse bg-surface-container-low rounded-xl m-8" />,
+});
+
+const Contact = dynamic(() => import("../../components/Contact").then(mod => mod.Contact), {
+  loading: () => <div className="h-96 animate-pulse bg-surface-container-low rounded-xl m-8" />,
+});
 
 import { env } from "../../env";
 

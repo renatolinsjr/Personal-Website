@@ -7,14 +7,25 @@ import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { GithubIcon, LinkedInIcon } from "./icons/SocialIcons";
 
+import { useState, useEffect } from "react";
+import { useOptimizedTask } from "../hooks/useOptimizedTask";
+
 export function Hero({ dict }: { dict: Dictionary }) {
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const { runTask } = useOptimizedTask();
+
+  useEffect(() => {
+    // Yield to the main thread before starting the animation
+    runTask(() => setShouldAnimate(true));
+  }, [runTask]);
+
   return (
     <section className="max-w-7xl mx-auto px-8 mb-32 pt-20" id="sobre">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
         <motion.div
           className="lg:col-span-8"
           initial={false}
-          animate={{ opacity: 1, y: 0 }}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
         >
           <span className="text-sm font-label tracking-[0.2em] text-secondary uppercase mb-6 block">{dict.hero.location}</span>

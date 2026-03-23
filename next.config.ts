@@ -6,7 +6,15 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizePackageImports: [
+      "lucide-react",
+      "framer-motion",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-label",
+      "react-icons",
+      "date-fns",
+      "lodash"
+    ],
   },
   async headers() {
     return [

@@ -14,21 +14,29 @@ This repository contains my personal portfolio, built as a high-performance, int
 
 ---
 
-### 🚀 Key Technical Features
+### 🚀 Key Technical Architecture
 
-#### 🌍 Full Internationalization (i18n)
-- Native support for **PT-BR** and **EN-US** using a custom middleware (`proxy.ts`) for locale detection and routing.
-- Context-aware UI strings and localized assets (e.g., specific PDF resumes for each locale).
+#### 🌍 Localization & Internationalization (i18n)
+- **Native Support**: Bilingual support for **PT-BR** and **EN-US** using a custom middleware (`proxy.ts`) for locale detection and routing.
+- **Dynamic Assets**: Localized resumes (PDFs) and context-aware strings.
 
-#### 🛡️ Robust Security (Post-Audit)
-- **Technical Security Audit**: Implemented 17+ critical fixes covering CSP, X-Frame-Options, and more.
-- **Form Integrity**: Contact form protected by Google **ReCAPTCHA v3**, **Honeypot** traps, and strict **server-side Zod validation**.
-- **Sanitized Backend**: Environment variable validation via `env.ts` (Zod) to ensure zero failures during runtime and build.
+#### ⚡ 100 Lighthouse Performance Architecture
+This project is optimized to achieve a perfect 100 score in Performance, Accessibility, Best Practices, and SEO.
 
-#### ⚡ Performance & Specialized Logic
-- **Memory Leak Protection**: Optimized `IntersectionObserver` implementations in the navigation and components.
-- **Smart Components**: Localized date utilities and experience calculations to ensure data relevance without manual updates.
-- **Static Assets**: Subresource Integrity (SRI) for external stylesheets (e.g., Devicons).
+- **Dynamic Loading & Code Splitting**: Sections below the fold (`Skills`, `Experience`, `Contact`) use `next/dynamic` to reduce the initial JavaScript bundle by ~240KB, prioritizing **LCP**.
+- **Main Thread Optimization**: Custom `useOptimizedTask` hook via **Scheduler API (`postTask`)**. Heavy `framer-motion` animations are deferred until the thread is idle to hit **0ms TBT**.
+- **BF Cache & Headers**: `vercel.json` configured with specific headers to enable instant back/forward navigation.
+- **Micro-Optimization**: `optimizePackageImports` in `next.config.ts` for aggressive tree-shaking of large icon libraries.
+
+#### 🛡️ Security & Integrity (Post-Audit)
+- **Full Security Headers**: 17+ critical fixes (CSP, X-Frame-Options, etc.) implemented after a technical audit.
+- **Anti-Spam Form**: High-integrity contact form with **Google ReCAPTCHA v3**, **Honeypot**, and **Zod** server-side validation.
+- **Type Safety**: Runtime and Build-time environment variable validation via `env.ts`.
+
+#### 🎨 Modern UI/UX
+- **Next.js 16 + React 19**: Leveraging Server Components and Concurrent rendering.
+- **Fluid Themes**: `next-themes` with zero layout shift (CLS).
+- **Smooth Motion**: Complex animations with Framer Motion, optimized for performance.
 
 ---
 
