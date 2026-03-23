@@ -1,0 +1,46 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Lint
+        run: pnpm run lint
+        
+      - name: Type Check
+        run: pnpm tsc --noEmit
+        
+      - name: Test
+        run: pnpm run test --run
+        
+      - name: Build
+        run: pnpm run build
+        env:
+          NEXT_PUBLIC_GA_ID: "G-XXXX"
+          SITE_URL: "https://renatolins.com"
+          RECAPTCHA_SECRET_KEY: "dummy_secret"
+          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: "dummy_site_key"
+          FORMSPREE_ENDPOINT: "https://formspree.io/f/dummy"
