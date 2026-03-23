@@ -26,6 +26,17 @@ export function Experience({ dict }: { dict: Dictionary }) {
               </span>
             ))}
           </motion.h2>
+
+          <div className="mt-12 space-y-8 hidden md:block">
+            <div className="p-6 rounded-xl bg-surface-container-low border border-outline-variant/10">
+              <p className="text-3xl font-bold text-primary mb-1">{dict.experience.metrics.users}</p>
+              <p className="text-sm font-label text-on-surface-variant uppercase tracking-widest">{dict.experience.metrics.usersLabel}</p>
+            </div>
+            <div className="p-6 rounded-xl bg-surface-container-low border border-outline-variant/10">
+              <p className="text-3xl font-bold text-primary mb-1">{dict.experience.metrics.savings}</p>
+              <p className="text-sm font-label text-on-surface-variant uppercase tracking-widest">{dict.experience.metrics.savingsLabel}</p>
+            </div>
+          </div>
         </div>
 
         <div className="md:w-2/3">

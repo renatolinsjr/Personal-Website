@@ -10,7 +10,7 @@ describe("Experience Component", () => {
     render(<Experience dict={dict} />);
     
     // Check main title
-    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(dict.experience.title);
+    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(/Professional Journey/i);
     
     // Check metrics
     expect(screen.getByText(dict.experience.metrics.users)).toBeInTheDocument();

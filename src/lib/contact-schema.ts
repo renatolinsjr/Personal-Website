@@ -6,5 +6,5 @@ export const createContactSchema = (dict?: any) => z.object({ // eslint-disable-
   message: z.string().min(1, dict?.contact?.form?.validation?.messageRequired || "Message is required").max(5000),
   phone: z.string().max(30).optional(),
   company: z.string().optional(), // Honeypot field
-  recaptchaToken: z.string().min(1, "ReCAPTCHA token is required"),
+  recaptchaToken: z.string().optional(),
 });

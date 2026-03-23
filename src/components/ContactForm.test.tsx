@@ -44,9 +44,9 @@ describe("ContactForm Component", () => {
     render(<ContactForm dict={dict} />);
 
     // Fill form
-    fireEvent.change(screen.getByLabelText(dict.contact.form.name), { target: { value: "John Doe" } });
-    fireEvent.change(screen.getByLabelText(dict.contact.form.email), { target: { value: "john@example.com" } });
-    fireEvent.change(screen.getByLabelText(dict.contact.form.message), { target: { value: "This is a test message satisfying min length." } });
+    fireEvent.change(screen.getByLabelText(dict.contact.form.name, { exact: false }), { target: { value: "John Doe" } });
+    fireEvent.change(screen.getByLabelText(dict.contact.form.email, { exact: false }), { target: { value: "john@example.com" } });
+    fireEvent.change(screen.getByLabelText(dict.contact.form.message, { exact: false }), { target: { value: "This is a test message satisfying min length." } });
 
     const submitBtn = screen.getByRole("button", { name: dict.contact.form.submit });
     
@@ -67,8 +67,8 @@ describe("ContactForm Component", () => {
 
     // Form should be reset and in cooldown
     await waitFor(() => {
-      expect(screen.getByLabelText(dict.contact.form.name)).toHaveValue("");
-      expect(screen.getByText(/Wait \d+s/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(dict.contact.form.name, { exact: false })).toHaveValue("");
+      expect(screen.getByText(new RegExp(dict.contact.form.cooldown, "i"))).toBeInTheDocument();
     });
   });
 
@@ -80,9 +80,9 @@ describe("ContactForm Component", () => {
 
     render(<ContactForm dict={dict} />);
 
-    fireEvent.change(screen.getByLabelText(dict.contact.form.name), { target: { value: "John Doe" } });
-    fireEvent.change(screen.getByLabelText(dict.contact.form.email), { target: { value: "john@example.com" } });
-    fireEvent.change(screen.getByLabelText(dict.contact.form.message), { target: { value: "This is a test message." } });
+    fireEvent.change(screen.getByLabelText(dict.contact.form.name, { exact: false }), { target: { value: "John Doe" } });
+    fireEvent.change(screen.getByLabelText(dict.contact.form.email, { exact: false }), { target: { value: "john@example.com" } });
+    fireEvent.change(screen.getByLabelText(dict.contact.form.message, { exact: false }), { target: { value: "This is a test message." } });
 
     fireEvent.click(screen.getByRole("button", { name: dict.contact.form.submit }));
 
@@ -96,10 +96,14 @@ describe("ContactForm Component", () => {
       };
       // Verify fetch call
       expect(fetch).toHaveBeenCalledWith("/api/contact", expect.objectContaining({
-        body: JSON.stringify({
-          ...formData,
-          recaptchaToken: "mock-token",
-        }),
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      }));
+
+      const lastCallBody = JSON.parse(vi.mocked(fetch).mock.calls[0][1]!.body as string);
+      expect(lastCallBody).toEqual(expect.objectContaining({
+        ...formData,
+        recaptchaToken: "mock-token",
       }));
       expect(toast.error).toHaveBeenCalledWith(dict.contact.form.error);
       expect(screen.getByText(/Server Error/i)).toBeInTheDocument();

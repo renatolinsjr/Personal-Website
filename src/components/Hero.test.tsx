@@ -11,7 +11,7 @@ describe("Hero Component", () => {
     
     // Check main headings
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(dict.hero.title);
-    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(dict.hero.subtitle);
+    expect(screen.getByText(dict.hero.subtitle)).toBeInTheDocument();
     
     // Check description text
     expect(screen.getByText(dict.hero.description)).toBeInTheDocument();

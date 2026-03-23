@@ -37,6 +37,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
       phone: "",
       message: "",
       company: "",
+      recaptchaToken: "",
     },
   });
 
@@ -81,11 +82,11 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
       } else {
         throw new Error(result.error || dict.contact.form.error);
       }
-    } catch {
+    } catch (err) {
       toast.error(dict.contact.form.error);
       setFormStatus({
         type: "error",
-        message: dict.contact.form.errorDescription,
+        message: err instanceof Error ? err.message : dict.contact.form.errorDescription,
       });
     } finally {
       setIsLoading(false);
