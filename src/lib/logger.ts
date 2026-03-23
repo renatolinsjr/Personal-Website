@@ -17,7 +17,7 @@ export const logError = async (error: Error, info?: LogInfo) => {
         info,
       }),
     });
-  } catch (err) {
+  } catch {
     // Fail silently in production to avoid infinite loops or blocking user experience
   }
 };

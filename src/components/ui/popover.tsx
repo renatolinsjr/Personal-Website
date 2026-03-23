@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
-import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { buttonVariants } from "@/components/ui/button"
 import { type VariantProps } from "class-variance-authority"
 
