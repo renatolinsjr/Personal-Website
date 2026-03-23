@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { HeaderControls } from "./HeaderControls";
 import { Menu, X } from "lucide-react";
 import { type Dictionary } from "../dictionaries";
@@ -11,7 +11,7 @@ export function Navigation({ dict }: { dict: Dictionary }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = React.useMemo(() => [
+  const navItems = useMemo(() => [
     { label: dict.nav.about, id: "sobre" },
     { label: dict.nav.skills, id: "skills" },
     { label: dict.nav.experience, id: "experiencia" },
