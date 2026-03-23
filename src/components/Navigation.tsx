@@ -47,7 +47,7 @@ export function Navigation({ dict }: { dict: Dictionary }) {
       observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [navItems]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
