@@ -3,7 +3,6 @@
 import Image from "next/image";
 import renatoImg from "../../public/renato.jpg";
 import { type Dictionary } from "../dictionaries";
-import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { GithubIcon, LinkedInIcon } from "./icons/SocialIcons";

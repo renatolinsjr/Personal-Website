@@ -14,7 +14,7 @@ export function HeaderControls() {
   const currentLocale = params.locale as string;
 
   useEffect(() => {
-    setMounted(true);
+    setMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
   const toggleLanguage = () => {
