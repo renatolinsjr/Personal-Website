@@ -11,12 +11,12 @@ export function Navigation({ dict }: { dict: Dictionary }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = [
+  const navItems = React.useMemo(() => [
     { label: dict.nav.about, id: "sobre" },
     { label: dict.nav.skills, id: "skills" },
     { label: dict.nav.experience, id: "experiencia" },
     { label: dict.nav.contact, id: "contato" },
-  ];
+  ], [dict.nav]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
