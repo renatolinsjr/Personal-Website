@@ -6,7 +6,7 @@ export function useOptimizedTask() {
   const runTask = (fn: () => void) => {
     // Check if the browser supports the Scheduler API (modern Chrome)
     if (typeof window !== "undefined" && "scheduler" in window) {
-      // @ts-ignore
+      // @ts-expect-error because window is not typed to have scheduler property
       scheduler.postTask(fn, { priority: "background" });
     } else {
       setTimeout(fn, 0);
