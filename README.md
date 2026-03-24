@@ -23,6 +23,9 @@ This repository contains my personal portfolio, built as a high-performance, int
 #### ⚡ 100 Lighthouse Performance Architecture
 This project is optimized to achieve a perfect 100 score in Performance, Accessibility, Best Practices, and SEO.
 
+![Recording2026-03-23205605-ezgif com-optimize](https://github.com/user-attachments/assets/c2611524-2315-47e5-93a0-608897511bf5)
+
+
 - **Dynamic Loading & Code Splitting**: Sections below the fold (`Skills`, `Experience`, `Contact`) use `next/dynamic` to reduce the initial JavaScript bundle by ~240KB, prioritizing **LCP**.
 - **Main Thread Optimization**: Custom `useOptimizedTask` hook via **Scheduler API (`postTask`)**. Heavy `framer-motion` animations are deferred until the thread is idle to hit **0ms TBT**.
 - **BF Cache & Headers**: `vercel.json` configured with specific headers to enable instant back/forward navigation.
